@@ -1,6 +1,12 @@
 # Library Management System -Java
 A Library Management System made using the concepts of Object Oriented Analysis and Design. Minimal Code is written in the GUI and the entities are decoupled as well.
 
+## Interface
+<p align="middle">
+   <img src="../master/images/interface.PNG" width="400"/>
+   <img src="../master/images/interface2.PNG" width="400"/>
+</p>   
+
 ## Actors:
 The actors include the following: 
 * Librarian
@@ -66,3 +72,6 @@ borrowed.
 Now just click Next for the rest of the windows. After all this the database connection is made. Make sure that you connect with the database before running the project by right clicking on the connection and selecting connect. Now you are ready to run the project!
 
 ![final](../master/images/final.png)
+
+## Note
+The password for Administrative Functions is *lib*. The admin adds new clerks and librarian then they both do the rest of the functions.
