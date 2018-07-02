@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=D:\FAST\5th Semester    (Fall 2017)\Object Oriented Analysis and Design\Assignments\Assignment 1\Library Management System\Database
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jul 02 23:13:50 PKT 2018: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Jul 02 23:13:50 PKT 2018:
+Shutting down instance a816c00e-0164-5bbd-9799-ffffa03760cf on database directory D:\FAST\5th Semester    (Fall 2017)\Object Oriented Analysis and Design\Assignments\Assignment 1\Library Management System\Database\LMS with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+----------------------------------------------------------------
