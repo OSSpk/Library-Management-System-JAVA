@@ -1,5 +1,5 @@
 # Library Management System -Java
-A Library Management System made using the concepts of Object Oriented Analysis and Design. Minimal Code is written in the GUI and the entities are decoupled as well. The interface is console based.
+A Library Management System made using the concepts of Object Oriented Analysis and Design. Minimal Code is written in the GUI and the entities are decoupled as well. The interface is console based. This project was designed during the course "Object Oriented Analysis and Design CS309".
 
 The **Class Diagram** of the project is also provided along with the **Database Schema** file. The class diagram file can be opened using [Star UML](http://staruml.io/).
 
@@ -76,4 +76,4 @@ Now just click Next for the rest of the windows. After all this the database con
 ![final](../master/images/final.png)
 
 ## Note
-The password for Administrative Functions is *lib*. The admin adds new clerks and librarian then they both do the rest of the functions.
+The password for Administrative Functions is *lib*. The admin adds new clerks and librarian, then they both do the rest of the functions.
