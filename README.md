@@ -4,7 +4,7 @@ A Library Management System made using the concepts of Object Oriented Analysis 
 The **Class Diagram** of the project is also provided along with the **Database Schema** file. The class diagram file can be opened using [Star UML](http://staruml.io/).
 
 ## Class Diagram
-![class diagram](../master/images/class.PNG)
+![class diagram](../master/images/diagram.PNG)
 
 ## Interface
 <p align="middle">
