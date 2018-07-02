@@ -1,5 +1,10 @@
 # Library Management System -Java
-A Library Management System made using the concepts of Object Oriented Analysis and Design. Minimal Code is written in the GUI and the entities are decoupled as well.
+A Library Management System made using the concepts of Object Oriented Analysis and Design. Minimal Code is written in the GUI and the entities are decoupled as well. The interface is console based. This project was designed during the course "Object Oriented Analysis and Design CS309".
+
+The **Class Diagram** of the project is also provided along with the **Database Schema** file. The class diagram file can be opened using [Star UML](http://staruml.io/).
+
+## Class Diagram
+![class diagram](../master/images/class.PNG)
 
 ## Interface
 <p align="middle">
@@ -12,6 +17,7 @@ The actors include the following:
 * Librarian
 * Checkout Clerk
 * Borrower
+* Administrator
 
 ## Use Cases:
 After determining the actors, the second step in use case analysis is to determine the tasks that each actor will need to do with the system. Each task is called a use case because it represents one particular way the system will be used.
@@ -40,6 +46,13 @@ borrowed.
 * ❏ Add a new item to the collection.
 * ❏ Delete an item from the collection.
 * ❏ Change the information the system has recorded about an item.
+
+### Administrator:
+* ❏ Add Clerk.
+* ❏ Add Librarian.
+* ❏ View Issued Books History.
+* ❏ View All Books in Library.
+
 
 ## How to Run
 1- Install these:
@@ -74,4 +87,4 @@ Now just click Next for the rest of the windows. After all this the database con
 ![final](../master/images/final.png)
 
 ## Note
-The password for Administrative Functions is *lib*. The admin adds new clerks and librarian then they both do the rest of the functions.
+The password for Administrative Functions is *lib*. The admin adds new clerks and librarian, then they both do the rest of the functions.
