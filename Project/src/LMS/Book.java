@@ -6,14 +6,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Book {
-   
+
     private int bookID;           // ID given by a library to a book to make it distinguishable from other books
     private String title;         // Title of a book 
     private String subject;       // Subject to which a book is related!
     private String author;        // Author of book!
     private boolean isIssued;        // this will be true if the book is currently issued to some borrower.
-    private ArrayList<HoldRequest> holdRequests; // record of all hold request on that book
- 
+    private HoldRequestOperations holdRequestsOperations =new HoldRequestOperations();
     static int currentIdNumber = 0;     //This will be unique for every book, since it will be incremented when everytime
                                         //when a book is created
     
@@ -32,29 +31,14 @@ public class Book {
         subject = s;
         author = a;
         isIssued = issued;
-        
-        holdRequests = new ArrayList();
+
     }
-    
-    // adding a hold req.
-    public void addHoldRequest(HoldRequest hr)
-    {
-        holdRequests.add(hr);
-    }
-    
-    // removing a hold req.
-    public void removeHoldRequest()
-    {
-        if(!holdRequests.isEmpty())
-        {
-            holdRequests.remove(0);
-        }
-    }
-    
+
+
     // printing all hold req on a book.
     public void printHoldRequests()
     {
-        if (!holdRequests.isEmpty())
+        if (!holdRequestsOperations.holdRequests.isEmpty())
         { 
             System.out.println("\nHold Requests are: ");
             
@@ -62,10 +46,10 @@ public class Book {
             System.out.println("No.\t\tBook's Title\t\t\tBorrower's Name\t\t\tRequest Date");
             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
             
-            for (int i = 0; i < holdRequests.size(); i++)
+            for (int i = 0; i < holdRequestsOperations.holdRequests.size(); i++)
             {                      
                 System.out.print(i + "-" + "\t\t");
-                holdRequests.get(i).print();
+                holdRequestsOperations.holdRequests.get(i).print();
             }
         }
         else
@@ -151,7 +135,7 @@ public class Book {
      
      public ArrayList<HoldRequest> getHoldRequests()
     {
-        return holdRequests;
+        return holdRequestsOperations.holdRequests;
     }
     /*-----------------------------------*/
      
@@ -170,8 +154,8 @@ public class Book {
     public void placeBookOnHold(Borrower bor)
     {
         HoldRequest hr = new HoldRequest(bor,this, new Date());
-        
-        addHoldRequest(hr);        //Add this hold request to holdRequests queue of this book
+
+        holdRequestsOperations.addHoldRequest(hr);        //Add this hold request to holdRequests queue of this book
         bor.addHoldRequest(hr);      //Add this hold request to that particular borrower's class as well
         
         System.out.println("\nThe book " + title + " has been successfully placed on hold by borrower " + bor.getName() + ".\n");
@@ -197,9 +181,9 @@ public class Book {
         
         
         //If that borrower has already requested for that particular book. Then he isn't allowed to make the same request again.
-        for (int i = 0; i < holdRequests.size(); i++)
+        for (int i = 0; i < holdRequestsOperations.holdRequests.size(); i++)
         {
-            if ((holdRequests.get(i).getBorrower() == borrower))
+            if ((holdRequestsOperations.holdRequests.get(i).getBorrower() == borrower))
             {
                 makeRequest = false;    
                 break;
@@ -215,10 +199,10 @@ public class Book {
     }
 
     
-    // Gertting Info of a Hold Request
+    // Getting Info of a Hold Request
     public void serviceHoldRequest(HoldRequest hr)
     {
-        removeHoldRequest();
+        holdRequestsOperations.removeHoldRequest();
         hr.getBorrower().removeHoldRequest(hr);
     }
 
@@ -230,7 +214,7 @@ public class Book {
         //First deleting the expired hold requests
         Date today = new Date();        
         
-        ArrayList<HoldRequest> hRequests = holdRequests;
+        ArrayList<HoldRequest> hRequests = holdRequestsOperations.holdRequests;
         
         for (int i = 0; i < hRequests.size(); i++)
         {
@@ -242,7 +226,7 @@ public class Book {
             
             if(days>Library.getInstance().getHoldRequestExpiry())
             {
-                removeHoldRequest();
+                holdRequestsOperations.removeHoldRequest();
                 hr.getBorrower().removeHoldRequest(hr);
             } 
         }
@@ -263,13 +247,13 @@ public class Book {
         
         else
         {               
-            if (!holdRequests.isEmpty())
+            if (!holdRequestsOperations.holdRequests.isEmpty())
             {
                 boolean hasRequest = false;
                 
-                for (int i = 0; i < holdRequests.size() && !hasRequest;i++)
+                for (int i = 0; i < holdRequestsOperations.holdRequests.size() && !hasRequest;i++)
                 {
-                    if (holdRequests.get(i).getBorrower() == borrower)
+                    if (holdRequestsOperations.holdRequests.get(i).getBorrower() == borrower)
                         hasRequest = true;
                         
                 }
@@ -277,8 +261,8 @@ public class Book {
                 if (hasRequest)
                 {
                     //If this particular borrower has the earliest request for this book
-                    if (holdRequests.get(0).getBorrower() == borrower)
-                        serviceHoldRequest(holdRequests.get(0));       
+                    if (holdRequestsOperations.holdRequests.get(0).getBorrower() == borrower)
+                        serviceHoldRequest(holdRequestsOperations.holdRequests.get(0));
 
                     else
                     {
