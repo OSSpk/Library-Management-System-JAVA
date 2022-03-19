@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 public class Library {
     
     private String name;                                // name of library
-    private Librarian librarian;                        // object of Librarian (only one)                       
-    private ArrayList <Person> persons;                 // all clerks and borrowers  
+    public static Librarian librarian;                        // object of Librarian (only one)
+    public static ArrayList <Person> persons;                 // all clerks and borrowers
     private ArrayList <Book> booksInLibrary;            // all books in library are here!
     
     private ArrayList <Loan> loans;                     // history of all books which have been issued
@@ -30,11 +30,13 @@ public class Library {
     public double per_day_fine;
     
     public int hold_request_expiry;                    //number of days after which a hold request will expire
-    
+    //Created object of the hold request operations
+    private HoldRequestOperations holdRequestsOperations =new HoldRequestOperations();
+
     
     /*----Following Singleton Design Pattern (Lazy Instantiation)------------*/
     private static Library obj;
-   
+
     public static Library getInstance()
     {
         if(obj==null)
@@ -111,23 +113,10 @@ public class Library {
     }
     
     /*---------------------------------------*/
-    
-    /*-----Adding all People in Library----*/
-    public boolean addLibrarian(Librarian lib)
-    {
-        //One Library can have only one Librarian
-        if (librarian == null)
-        {
-            librarian = lib;
-            persons.add(librarian);
-            return true;
-        }
-        else
-            System.out.println("\nSorry, the library already has one librarian. New Librarian can't be created.");
-        return false;
-    }
-    
-    public void addClerk(Clerk c) 
+
+    /*-----Adding other People in Library----*/
+
+    public void addClerk(Clerk c)
     {
         persons.add(c);
     }
@@ -262,7 +251,7 @@ public class Library {
                             {
                                 HoldRequest hr = hRequests.get(i);
                                 hr.getBorrower().removeHoldRequest(hr);
-                                b.removeHoldRequest();                                                                
+                                holdRequestsOperations.removeHoldRequest();
                             }
                         }
                     }
@@ -489,7 +478,7 @@ public class Library {
             }
             
             Librarian l = new Librarian(-1,n,address,phone,salary,-1); 
-            if(addLibrarian(l))
+            if(Librarian.addLibrarian(l))
             {
                 System.out.println("\nLibrarian with name " + n + " created successfully.");
                 System.out.println("\nYour ID is : " + l.getID());
@@ -711,7 +700,7 @@ public class Library {
                     int off=rs.getInt("OFFICE_NO");
                     Librarian l= new Librarian(id,lname,adrs,phn,sal,off);
 
-                    addLibrarian(l);
+                    Librarian.addLibrarian(l);
                     
                 }while(rs.next());
            
@@ -894,8 +883,8 @@ public class Library {
                             {
                               set=false;   
                               HoldRequest hbook= new HoldRequest(bb,books.get(i),off);
-                              books.get(i).addHoldRequest(hbook);
-                              bb.addHoldRequest(hbook);
+                             holdRequestsOperations.addHoldRequest(hbook);
+                             bb.addHoldRequest(hbook);
                             }
                         }
                         }while(rs.next());

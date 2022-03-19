@@ -12,21 +12,21 @@ public abstract class Person
     static int currentIdNumber = 0;     //This will be unique for every person, since it will be incremented when everytime
                                        //when a person is created
 
-    public Person(int dd, String n, String a, int p)   // para cons.
+    public Person(int idNum, String name, String address, int phoneNum)   // para cons.
     {
         currentIdNumber++;
         
-        if(dd==-1)
+        if(idNum==-1)
         {
             id = currentIdNumber;
         }
         else
-            id = dd;
+            id = idNum;
         
         password = Integer.toString(id);
-        name = n;
-        address = a;
-        phoneNo = p;
+        this.name = name;
+        this.address = address;
+        phoneNo = phoneNum;
     }        
     
     // Printing Info of a Person
