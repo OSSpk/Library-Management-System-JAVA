@@ -41,7 +41,7 @@ public class Main
     // Functionalities of all Persons
     public static void allFunctionalities(Person person, int choice) throws IOException
     {
-        Library lib = Library.getInstance();
+        LibraryOperations lib = new LibraryOperations();
         
         Scanner scanner = new Scanner(System.in);
         int input = 0;
@@ -268,7 +268,8 @@ public class Main
         
         //-------------------INTERFACE---------------------------//
         
-        Library lib = Library.getInstance();
+        LibraryOperations lib = new LibraryOperations();
+        LibraryDatabase dbOperation=new LibraryDatabase();
         
         // Setting some by default information like name of library ,fine, deadline and limit of hold request
         lib.setFine(20);
@@ -277,7 +278,7 @@ public class Main
         lib.setName("FAST Library");
         
         // Making connection with Database.
-        Connection con = lib.makeConnection();
+        Connection con = dbOperation.makeConnection();
         
         if (con == null)    // Oops can't connnect !
         {
@@ -287,7 +288,7 @@ public class Main
         
         try {
 
-        lib.populateLibrary(con);   // Populating Library with all Records
+        dbOperation.populateLibrary(con);   // Populating Library with all Records
          
         boolean stop = false;
         while(!stop)
@@ -470,7 +471,7 @@ public class Main
         }
         
         //Loading back all the records in database
-        lib.fillItBack(con);
+        dbOperation.fillItBack(con);
         }
         catch(Exception e)
         {
