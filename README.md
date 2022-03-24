@@ -15,6 +15,9 @@ The **Class Diagram** of the project is also provided along with the **Database 
 ## Class Diagram
 ![class diagram](../master/images/diagram.PNG)
 
+**Note**: After Refactoring, new Class "HoldRequestOperations" is added to the above structure which lies in between the HoldRequest class and Book class.
+This class removes the bidirectional dependency between HoldRequest and Book. 
+
 ## Interface
 <p align="middle">
    <img src="../master/images/interface.PNG" width="400"/>
