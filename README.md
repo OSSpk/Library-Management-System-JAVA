@@ -18,6 +18,9 @@ The **Class Diagram** of the project is also provided along with the **Database 
 **Note**: After Refactoring, new Class "HoldRequestOperations" is added to the above structure which lies in between the HoldRequest class and Book class.
 This class removes the bidirectional dependency between HoldRequest and Book. 
 
+**Reason behind introducing new class:**
+Hold Requests operations are performed inside the book class. And this violated the principle of single responsibility, so the responsibility is split by creating a new class HoldRequestOperations.
+
 ## Interface
 <p align="middle">
    <img src="../master/images/interface.PNG" width="400"/>
