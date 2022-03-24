@@ -16,10 +16,7 @@ The **Class Diagram** of the project is also provided along with the **Database 
 ![class diagram](../master/images/diagram.PNG)
 
 **Note**: After Refactoring, new Class "HoldRequestOperations" is added to the above structure which lies in between the HoldRequest class and Book class.
-This class removes the bidirectional dependency between HoldRequest and Book. 
-
-**Reason behind introducing new class:**
-Hold Requests operations are performed inside the book class. And this violated the principle of single responsibility, so the responsibility is split by creating a new class HoldRequestOperations.
+This class removes the bidirectional dependency between HoldRequest and Book. More details mentioned [here](https://github.com/OSSpk/Library-Management-System-JAVA/issues/9) 
 
 ## Interface
 <p align="middle">
