@@ -7,13 +7,13 @@ import java.util.*;
 public class Borrower extends Person 
 {    
     private ArrayList<Loan> borrowedBooks;          //Those books which are currently borrowed by this borrower
-    private ArrayList<HoldRequest> onHoldBooks;    //Those books which are currently requested by this borrower to be on hold
+    private ArrayList<HoldRequest> onHoldBooks;  //Those books which are currently requested by this borrower to be on hold
 
     
     
-    public Borrower(int id,String n, String a, int p) // para. cons
+    public Borrower(int id,String name, String address, int phoneNum) // para. cons
     {
-        super(id,n,a,p);
+        super(id,name,address,phoneNum);
         
         borrowedBooks = new ArrayList();
         onHoldBooks = new ArrayList();        
@@ -84,40 +84,52 @@ public class Borrower extends Person
         
         
         System.out.println("\nDo you want to update " + getName() + "'s Name ? (y/n)");  
-        choice = sc.next();  
+        choice = sc.next();
 
-        if(choice.equals("y"))
-        {
-            System.out.println("\nType New Name: ");
-            setName(reader.readLine());
-            System.out.println("\nThe name is successfully updated.");            
-        }    
+        updateBorrowerName(choice, reader);
 
-               
+
         System.out.println("\nDo you want to update " + getName() + "'s Address ? (y/n)");  
-        choice = sc.next();  
+        choice = sc.next();
 
-        if(choice.equals("y"))
-        {
-            System.out.println("\nType New Address: ");
-            setAddress(reader.readLine());
-            System.out.println("\nThe address is successfully updated.");            
-        }    
+        updateBorrowerAddress(choice, reader);
 
         System.out.println("\nDo you want to update " + getName() + "'s Phone Number ? (y/n)");  
-        choice = sc.next();  
+        choice = sc.next();
 
+        updateBorrowerPhoneNumber(choice, sc);
+
+        System.out.println("\nBorrower is successfully updated.");
+        
+    }
+
+    private void updateBorrowerPhoneNumber(String choice, Scanner sc) {
         if(choice.equals("y"))
         {
             System.out.println("\nType New Phone Number: ");
             setPhone(sc.nextInt());
             System.out.println("\nThe phone number is successfully updated.");
         }
-        
-        System.out.println("\nBorrower is successfully updated.");
-        
     }
-    
+
+    private void updateBorrowerAddress(String choice, BufferedReader reader) throws IOException {
+        if(choice.equals("y"))
+        {
+            System.out.println("\nType New Address: ");
+            setAddress(reader.readLine());
+            System.out.println("\nThe address is successfully updated.");
+        }
+    }
+
+    private void updateBorrowerName(String choice, BufferedReader reader) throws IOException {
+        if(choice.equals("y"))
+        {
+            System.out.println("\nType New Name: ");
+            setName(reader.readLine());
+            System.out.println("\nThe name is successfully updated.");
+        }
+    }
+
     /*-- Adding and Removing from Borrowed Books---*/
     public void addBorrowedBook(Loan iBook)
     {
