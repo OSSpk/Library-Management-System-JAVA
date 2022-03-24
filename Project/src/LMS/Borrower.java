@@ -36,11 +36,7 @@ public class Borrower extends Person
         if (!borrowedBooks.isEmpty())
         { 
             System.out.println("\nBorrowed Books are: ");
-            
-            System.out.println("------------------------------------------------------------------------------");            
-            System.out.println("No.\t\tTitle\t\t\tAuthor\t\t\tSubject");
-            System.out.println("------------------------------------------------------------------------------");
-            
+            printBookHeader();
             for (int i = 0; i < borrowedBooks.size(); i++)
             {                      
                 System.out.print(i + "-" + "\t\t");
@@ -58,11 +54,7 @@ public class Borrower extends Person
         if (!onHoldBooks.isEmpty())
         { 
             System.out.println("\nOn Hold Books are: ");
-            
-            System.out.println("------------------------------------------------------------------------------");            
-            System.out.println("No.\t\tTitle\t\t\tAuthor\t\t\tSubject");
-            System.out.println("------------------------------------------------------------------------------");
-            
+            printBookHeader();
             for (int i = 0; i < onHoldBooks.size(); i++)
             {                      
                 System.out.print(i + "-" + "\t\t");
@@ -74,6 +66,15 @@ public class Borrower extends Person
             System.out.println("\nNo On Hold books.");                
     }
    
+    public void printBookHeader()
+    {
+         
+        System.out.println("------------------------------------------------------------------------------");            
+        System.out.println("No.\t\tTitle\t\t\tAuthor\t\t\tSubject");
+        System.out.println("------------------------------------------------------------------------------");
+
+    }
+
     // Updating Borrower's Info
     public void updateBorrowerInfo() throws IOException
     {
