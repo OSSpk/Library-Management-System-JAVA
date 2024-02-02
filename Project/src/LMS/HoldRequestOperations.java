@@ -2,7 +2,7 @@ package LMS;
 
 import java.util.ArrayList;
 
-public class HoldRequestOperations {
+public class HoldRequestOperations implements HoldRequestActions {
 
    static ArrayList <HoldRequest> holdRequests;
 
@@ -22,5 +22,20 @@ public class HoldRequestOperations {
         {
             holdRequests.remove(0);
         }
+    }
+
+    @Override
+    public void removeHoldRequest(HoldRequest hr) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void printHoldRequest() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void serviceHoldRequest(HoldRequest hr) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
