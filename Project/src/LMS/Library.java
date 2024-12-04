@@ -595,23 +595,24 @@ public class Library {
     /*--------------------------------IN- COLLABORATION WITH DATA BASE------------------------------------------*/
     
     // Making Connection With Database    
-    public Connection makeConnection()
-    {        
+   public Connection makeConnection()
+    {
         try
         {
-            String host = "jdbc:derby://localhost:1527/LMS";
-            String uName = "haris";
-            String uPass= "123";
+            String host = "jdbc:mysql://localhost:3306/lms";
+            String uName = "root";
+            String uPass= "root";
             Connection con = DriverManager.getConnection( host, uName, uPass );
+            System.out.println(con+"database connected succesfully");
             return con;
+
         }
-        catch ( SQLException err ) 
+        catch ( SQLException err )
         {
-            System.out.println( err.getMessage( ) );
+            System.out.println( err.getMessage( ) +"error connecting");
             return null;
-        }   
+        }
     }
-    
     
     // Loading all info in code via Database.
     public void populateLibrary(Connection con) throws SQLException, IOException
