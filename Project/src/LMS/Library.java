@@ -599,11 +599,23 @@ public class Library {
     {        
         try
         {
-            String host = "jdbc:derby://localhost:1527/LMS";
-            String uName = "haris";
-            String uPass= "123";
+           // try {
+                //String host = "jdbc:derby://localhost:3306/LMS";
+                //String uName = "haris";
+                //String uPass= "123";
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            //} catch (ClassNotFoundException ex) {
+               // Logger.getLogger(Library.class.getName()).log(Level.SEVERE, null, ex);
+            String host = "jdbc:mysql://localhost:3306/LMS";
+            String uName = "root";
+            String uPass= "admin";
             Connection con = DriverManager.getConnection( host, uName, uPass );
             return con;
+        }
+        catch (ClassNotFoundException ex) {
+                Logger.getLogger(Library.class.getName()).log(Level.SEVERE, null, ex);
+           return null;
         }
         catch ( SQLException err ) 
         {
